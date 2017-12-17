@@ -6,9 +6,9 @@ https://www.reddit.com/prefs/apps/
 
 If you do not have "PRAW"(Python Reddit API Wrapper) installed, you can install it via pip by typing:
 
-pip install praw
+<i>pip install praw</i>
 
-1) Click "are you a developer? create an app..."/"create another app..."
+1) Click "are you a developer? create an app..." or "create another app..."
 2) Click the "script" button and fill in any information
 3) Edit my config.py file, put it in the same directory as the game file.
      Format it like this:
