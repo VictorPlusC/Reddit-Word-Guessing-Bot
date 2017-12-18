@@ -18,3 +18,6 @@ If you do not have "PRAW"(Python Reddit API Wrapper) installed, you can install 
         client_secret =	"code next to the word 'secret'"
 4) Run the Reddit_Word_Guesser.py file
 5) Have fun!
+
+Devpost link:
+https://devpost.com/software/reddit-random-word-guessing-game
