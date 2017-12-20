@@ -69,7 +69,7 @@ def main():
                 if hintsUsed == 3:
                     print("All hints used!")
                 else:
-                    print("You have used "+str(hintsUsed)+"/3 hints so far.")
+                    print("You have used "+str(hintsUsed)+"/3 hints so far.\n")
         elif guess == "reveal":
             print("The word was: "+word+".")
             print("Restarting game...")
