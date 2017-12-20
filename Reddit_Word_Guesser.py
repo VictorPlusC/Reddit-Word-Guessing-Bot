@@ -17,7 +17,7 @@ def getWord(login):
             words = comment.body.split(" ")
             for word in words:
                 if len(word) >= 5 and len(word) <= 7:
-                    return word.lower().strip(".").strip(",").strip("'").strip('"')
+                    return word.lower().strip(".").strip(",").strip("'").strip('"').strip(":")
 
 def main():
     
@@ -29,7 +29,8 @@ def main():
     print("Type 'quit' to terminate the game, 'hint' for up to three extra hints.")
     print("Type 'reveal' to see your word if you just want to know, (this will reset the game).\n")
     print("***Guesses and commands are not case sensitive!***\n")
-
+    toPrint = [word[0],"_"*(len(word)-1)]
+    print("Your word: "+"".join(toPrint)+"\n")
     hints = set()
     hintsUsed = 0
     guess = ""
