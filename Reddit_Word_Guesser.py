@@ -26,12 +26,14 @@ def main():
 
     print("\nWord acquired, time to guess!")
     print("Hint: the word is of length",len(word),"and the first letter is '"+word[0]+"'.")
-    print("Type 'quit' to terminate the game, 'hint' for one extra hint.")
+    print("Type 'quit' to terminate the game, 'hint' for up to three extra hints.")
     print("Type 'reveal' to see your word if you just want to know, (this will reset the game).\n")
     print("***Guesses and commands are not case sensitive!***\n")
+
+    hints = set()
+    hintsUsed = 0
+    guess = ""
     
-    hintUsed = False
-    guess = ""    
     wordHash = {}
     for char in word:
         wordHash[char] = wordHash.get(char, 0) + 1
@@ -44,20 +46,29 @@ def main():
             print("Game terminated.")
             return
         elif guess == "hint":
-            if hintUsed == True:
-                print("Hint was already used!")
+            if hintsUsed == 3:
+                print("All hints used!")
             else:
-                randomIndex = random.randint(1,len(word)-1)
+                hintsUsed += 1
+                randomIndex = random.randint(1, len(word)-1)
+                if randomIndex in hints:
+                    while randomIndex in hints:
+                        randomIndex = random.randint(1, len(word)-1)
+                hints.add(randomIndex)
+                
                 print("\nThe "+str(randomIndex+1)+"th/[rd] letter of the word is: '"+word[randomIndex]+"'.")
-                hintUsed = True
                 print("In other words, this is the word so far: ")
                 toPrint = [word[0]]
-                for i in range(1,randomIndex):
-                    toPrint.append("_")
-                toPrint.append(word[randomIndex])
-                for j in range(randomIndex+1,len(word)):
-                    toPrint.append("_")
+                for i in range(1,len(word)):
+                    if i not in hints:
+                        toPrint.append("_")
+                    else:
+                        toPrint.append(word[i])
                 print("".join(toPrint)+"\n")
+                if hintsUsed == 3:
+                    print("All hints used!")
+                else:
+                    print("You have used "+str(hintsUsed)+"/3 hints so far.")
         elif guess == "reveal":
             print("The word was: "+word+".")
             print("Restarting game...")
